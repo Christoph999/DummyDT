@@ -53,7 +53,7 @@ generate_routes_dt <- function(nmax) {
 #' @return routes list
 find_routes <- function(routes, lat1, lng1, lat2, lng2){
   assertthat::assert_that(is.numeric(c(lat1,lng1,lat2,lng2)))
-  found_route <- routes[.(lat1, lng1, lat2, lng2)]
+  found_route <- routes[.(lat1, lng1, lat2, lng2), nomatch = 0L]
   return(found_route)
 }
 
