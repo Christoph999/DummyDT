@@ -5,7 +5,10 @@ test_that("test function with DT", {
   DT <- generate_routes_dt(nmax)
   # browser()
   unknown <- DT$search_route
+  print(unknown)
   routes <- DT$routes
   res <- find_routes(routes, unknown$lat1, unknown$lng1, unknown$lat2, unknown$lng2)
+  print("result:")
+  print(res)
   print("Done")
 })

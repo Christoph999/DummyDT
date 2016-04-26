@@ -22,7 +22,7 @@ generate_routes_dt <- function(nmax) {
   set.seed(2)
   tmp <- sample(seq(8, 10, length.out = 2*nmax), nmax)
   routes$lng1 <- tmp
-  set.seed(3)
+  # set.seed(3)
   tmp <- sample(seq(46, 49, length.out = 2*nmax), nmax)
   routes$lat2 <- tmp
   set.seed(4)
@@ -52,8 +52,11 @@ generate_routes_dt <- function(nmax) {
 #'
 #' @return routes list
 find_routes <- function(routes, lat1, lng1, lat2, lng2){
-  assertthat::assert_that(is.numeric(c(lat1,lng1,lat2,lng2)))
-  found_route <- routes[.(lat1, lng1, lat2, lng2), nomatch = 0L]
+  args <- c(lat1,lng1,lat2,lng2)
+  assertthat::assert_that(is.numeric(args))
+  found_route <- routes[J(args), nomatch = 0L]
+#   assertthat::assert_that(is.numeric(c(lat1, lng1, lat2, lng2)))
+#   found_route <- routes[.(lat1, lng1, lat2, lng2), nomatch = 0L] # ............. Does not work: lat1 = routes$lat1!?!?!?
   return(found_route)
 }
 
