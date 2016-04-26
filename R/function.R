@@ -1,4 +1,5 @@
 generate_routes_dt <- function(nmax) {
+  library(data.table)
   message("generate_routes_dt...")
   routes <- data.table::data.table(lat1 = numeric(nmax),
     lng1 = numeric(nmax),
